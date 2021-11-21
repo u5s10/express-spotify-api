@@ -1,8 +1,8 @@
 const axios = require('axios');
 const qs = require('qs');
 
-var clientId = process.env.SPOTIFY_CLIENT_ID;
-var clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+let clientId = process.env.SPOTIFY_CLIENT_ID;
+let clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 
 async function getToken() {
   try {
@@ -11,7 +11,7 @@ async function getToken() {
       url: 'https://accounts.spotify.com/api/token',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic NzA2ZTgxM2MxNWVjNDQzYTk5NzUwZjYwZTQyNzNjNDE6NWU4Mzc4ZjA0YWFkNGU5MzhhMzA1Nzc0MGIzNzA1MjU='
+        'Authorization': `Basic ${Buffer.from(clientId + ':' + clientSecret).toString('base64')}`
       },
       data: qs.stringify({
         grant_type: 'client_credentials'
