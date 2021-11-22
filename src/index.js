@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const { searchFor, getArtist, getAlbum } = require('./spotify/spotify')
+const { searchFor, getArtist, getAlbum, getAlbumTracks } = require('./spotify/spotify')
 
 const app = express();
 app.use(helmet());
@@ -33,6 +33,16 @@ app.get('/artists/:id', async (req, res) => {
 app.get('/albums/:id', async (req, res) => {
   try {
     const album = await getAlbum(req.params.id);
+    res.send(album);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+
+app.get('/albums/:id/tracks', async (req, res) => {
+  try {
+    const album = await getAlbumTracks(req.params.id);
     res.send(album);
   } catch (error) {
     res.send(error);

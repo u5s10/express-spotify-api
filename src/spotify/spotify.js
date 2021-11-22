@@ -80,8 +80,28 @@ async function getAlbum(id){
   }
 }
 
+async function getAlbumTracks(id){
+
+  try {
+    const token = await getToken();
+    const response = await axios({
+      method: 'get',
+      url: `https://api.spotify.com/v1/albums/${id}/tracks`,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data.items;
+  } catch (error) {
+    return error;
+  }
+}
+
 module.exports = {
   searchFor,
   getArtist,
-  getAlbum
+  getAlbum,
+  getAlbumTracks
 };
