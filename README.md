@@ -1,5 +1,5 @@
 # Express.js spotify proxy api
-Simple web api made with express.js, this app will serve as backend to an Angular app. This app acts as a proxy to spotify api, after each call to specific endpoint
+Simple web api made with express.js, this app will serve as a backend to an Angular app. This app acts as a proxy to spotify api, after each call to specific endpoint
 application performs token based authorization, request resources and then returns those resources to the caller. Application was created to keep clientId and clientSecret 
 from being exposed in Angular front end.
 ## Live demo
