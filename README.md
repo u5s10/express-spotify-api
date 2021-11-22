@@ -17,7 +17,7 @@ After setting up enviroment variables for clientId and clientSecret run
 ```bash
 node src
 ```
-You can test 
+You can test this app by running a request in postman
 
 
 ## License
