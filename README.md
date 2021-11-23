@@ -3,7 +3,10 @@ Simple web api made with express.js, this app will serve as a backend to an Angu
 application performs token based authorization, request resources and then returns those resources to the caller. Application was created to keep clientId and clientSecret 
 from being exposed in Angular front end.
 ## Live demo
-TODO
+Application has been deployed on Heroku <br/>
+Example request for artist: https://express-spotify-proxy.herokuapp.com/artists/0TnOYISbd1XYRBk9myaseg <br/>
+Example request for search query "queen": https://express-spotify-proxy.herokuapp.com/tracks?q=queen <br/>
+Example request for album: https://express-spotify-proxy.herokuapp.com/4aawyAB9vmqN3uQ7FjRGTy <br/>
 ## Installation
 
 ```bash
