@@ -26,7 +26,6 @@ async function getToken() {
 
 async function searchFor(query) {
   try {
-    console.log(process.env.PORT);
     const token = await getToken();
     const response = await axios({
       method: 'get',
