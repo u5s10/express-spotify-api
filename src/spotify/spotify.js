@@ -1,3 +1,4 @@
+require('dotenv').config();
 const axios = require('axios');
 const qs = require('qs');
 
@@ -25,6 +26,7 @@ async function getToken() {
 
 async function searchFor(query) {
   try {
+    console.log(process.env.PORT);
     const token = await getToken();
     const response = await axios({
       method: 'get',
@@ -61,6 +63,25 @@ async function getArtist(id){
 }
 
 
+async function getArtistsAlbums(id){
+
+  try {
+    const token = await getToken();
+    const response = await axios({
+      method: 'get',
+      url: `https://api.spotify.com/v1/artists/${id}/albums`,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
 async function getAlbum(id){
 
   try {
@@ -80,7 +101,7 @@ async function getAlbum(id){
   }
 }
 
-async function getAlbumTracks(id){
+async function getAlbumsTracks(id){
 
   try {
     const token = await getToken();
@@ -102,6 +123,7 @@ async function getAlbumTracks(id){
 module.exports = {
   searchFor,
   getArtist,
+  getArtistsAlbums,
   getAlbum,
-  getAlbumTracks
+  getAlbumsTracks
 };
