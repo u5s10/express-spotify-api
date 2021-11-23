@@ -6,7 +6,7 @@ from being exposed in Angular front end.
 Application has been deployed on Heroku <br/>
 Example request for artist: https://express-spotify-proxy.herokuapp.com/artists/0TnOYISbd1XYRBk9myaseg <br/>
 Example request for search query "queen": https://express-spotify-proxy.herokuapp.com/tracks?q=queen <br/>
-Example request for album: https://express-spotify-proxy.herokuapp.com/4aawyAB9vmqN3uQ7FjRGTy <br/>
+Example request for album: https://express-spotify-proxy.herokuapp.com/albums/4aawyAB9vmqN3uQ7FjRGTy <br/>
 ## Installation
 
 ```bash
