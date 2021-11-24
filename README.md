@@ -11,7 +11,7 @@ Example request for album: https://express-spotify-proxy.herokuapp.com/albums/4a
 
 ```bash
 git clone https://github.com/u5s10/express-spotify-api.git
-git cd express-spotify-api
+cd express-spotify-api
 npm install
 ```
 
