@@ -14,7 +14,7 @@ app.use(morgan('combined'));
 
 app.get('/tracks', async (req, res) => {
   try {
-    const tracks = await searchFor(req.query.q);
+    const tracks = await searchFor(req.query.q, req.query.offset);
     res.send(tracks);
   } catch (error) {
     res.send(error);
@@ -31,6 +31,15 @@ app.get('/artists/:id', async (req, res) => {
 });
 
 app.get('/artists/:id/albums', async(req, res) => {
+  try {
+    const albums = await getArtistsAlbums(req.params.id);
+    res.send(albums);
+  } catch (error) {
+    res.send(error); 
+  }
+})
+
+app.get('/artists/:id/top-tracks', async(req, res) => {
   try {
     const albums = await getArtistsAlbums(req.params.id);
     res.send(albums);

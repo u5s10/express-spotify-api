@@ -24,12 +24,12 @@ async function getToken() {
   }
 }
 
-async function searchFor(query) {
+async function searchFor(query, offset) {
   try {
     const token = await getToken();
     const response = await axios({
       method: 'get',
-      url: `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(query)}`,
+      url: `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(query)}&offset=${offset}`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -69,6 +69,25 @@ async function getArtistsAlbums(id){
     const response = await axios({
       method: 'get',
       url: `https://api.spotify.com/v1/artists/${id}/albums`,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+async function getArtistsTopTracks(id){
+
+  try {
+    const token = await getToken();
+    const response = await axios({
+      method: 'get',
+      url: `https://api.spotify.com/v1/artists/${id}/top-tracks`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -123,6 +142,7 @@ module.exports = {
   searchFor,
   getArtist,
   getArtistsAlbums,
+  getArtistsTopTracks,
   getAlbum,
-  getAlbumsTracks
+  getAlbumsTracks,
 };
